@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <title>Simple File Upload</title>
+  <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Simple File Upload</h1> <br/>
+      <div class="form-group">
+      <form id = "uploadForm" enctype="multipart/form-data" action="api/photo" method="post">
+          <input type="file" name="userPhoto"/><br/>
+          <button class="btn btn-default" type="submit" name="submit">Upload</button>
+      </form>
+      </div>
+    </div>
+</body>
+</html>
