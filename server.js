@@ -1,33 +1,15 @@
 var express = require('express');
 var multer = require('multer');
 var app = express();
-// set up storage
-var storage = multer.diskStorage({
-  destination: function(req, file, callback) {
-    callback(null, './uploads');
-  },
-  filename: function(req, file, callback) {
-    callback(null, file.fieldname + '-' + Date.now());
-  }
-});
-// set up upload
-var upload = multer({ storage: storage }).single('userPhoto');
 
-// midlleware
-app.use(express.static(__dirname + '/bower_components'));
-
-// route
-app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/index.html');
+var uploading = multer({
+  dest: __dirname + './uploads'
 });
 
-app.post('/api/photo', function(req, res) {
-  upload(req, res, function(err) {
-    if (err)
-      return res.end('Error uploading file!');
+var router = app.Router();
 
-    res.end('File is uploaded')
-  });
+router.post('/upload', uploading, function(req, res) {
+  console.log('Upload berhasil.');
 });
 
 // listener
